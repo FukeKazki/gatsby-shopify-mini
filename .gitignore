@@ -1,0 +1,11 @@
+node_modules/
+.cache/
+public
+__generated__
+
+# yarn v3
+.yarn/
+!.yarn/releases/*
+.env
+.env.development
+schema.graphql
