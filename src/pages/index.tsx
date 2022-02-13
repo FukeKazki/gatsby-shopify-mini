@@ -21,7 +21,6 @@ const IndexPage = () => {
           </li>
         ))}
       </ul>
-      <a href={storeContext.cart.webUrl}>購入ページへ</a>
     </div>
   );
 };

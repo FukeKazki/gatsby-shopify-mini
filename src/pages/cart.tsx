@@ -2,6 +2,8 @@ import * as React from "react";
 import { useContext } from "react";
 import { StoreContext } from "../context/store";
 
+// 商品の増減・削除
+// 購入フォームへの遷移
 const CartPage = () => {
   const storeContext = useContext(StoreContext);
 
@@ -47,6 +49,8 @@ const CartPage = () => {
           </li>
         ))}
       </ul>
+
+      <a href={storeContext.cart.webUrl}>購入ページへ</a>
     </>
   );
 };
