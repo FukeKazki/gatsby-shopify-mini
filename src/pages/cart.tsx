@@ -25,7 +25,7 @@ const CartPage = () => {
       <p>カートページ</p>
       <p>カートの中身</p>
       <ul>
-        {storeContext.cart.lineItems.map((lineItem) => (
+        {storeContext.cart?.lineItems?.map((lineItem) => (
           <li key={lineItem.id}>
             <p>商品名 {lineItem.title}</p>
             <p>種類 {lineItem.variant.id}</p>

@@ -7,7 +7,6 @@ const initialCartValue = {
   checkoutUrl: "",
   id: "",
   lineItemCount: 0,
-  lineItems: [],
   subtotalPrice: "",
   completedAt: "",
   webUrl: ""
@@ -15,7 +14,7 @@ const initialCartValue = {
 
 type ContextType = {
   loading: boolean;
-  cart: Cart;
+  cart: Partial<Cart>;
   addVariantToCart: (variantId: string, quantity: number) => void;
   removeLineItem: (lineItemID: string) => void;
   updateLineItem: (lineItemID: string, quantity: number) => void;
@@ -39,7 +38,7 @@ const isBrowser = typeof window !== `undefined`;
 const localStorageKey = `shopify_checkout_id`;
 
 export const StoreProvider = ({ children }: { children: ReactNode }) => {
-  const [cart, setCart] = useState<Cart>(initialCartValue);
+  const [cart, setCart] = useState<Partial<Cart>>(initialCartValue);
 
   const [loading, setLoading] = React.useState(false);
 
@@ -79,6 +78,7 @@ export const StoreProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const addVariantToCart = (variantId: string, quantity: number) => {
+    if (!cart.id) return;
     setLoading(true);
 
     const lineItemsToUpdate = [
@@ -97,6 +97,8 @@ export const StoreProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const removeLineItem = (lineItemID: string) => {
+    if (!cart.id) return;
+
     setLoading(true);
 
     return client.checkout
@@ -108,6 +110,8 @@ export const StoreProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const updateLineItem = (lineItemID: string, quantity: number) => {
+    if (!cart.id) return;
+
     setLoading(true);
 
     const lineItemsToUpdate = [{ id: lineItemID, quantity }];

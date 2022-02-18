@@ -2,9 +2,7 @@ import * as React from "react";
 import { GatsbyImage } from "gatsby-plugin-image";
 
 type PresentationProps = {
-  title: string;
-  images: GatsbyTypes.ShopifyProductImage[];
-  variants: GatsbyTypes.ShopifyProductVariant[];
+  data: GatsbyTypes.ProductPageQuery;
   handleBuy: () => void;
   quantity: number;
   handleIncrement: () => void;
@@ -13,9 +11,7 @@ type PresentationProps = {
 };
 
 export const Presentation = ({
-  title,
-  images,
-  variants,
+  data: { product },
   handleBuy,
   quantity,
   handleIncrement,
@@ -24,23 +20,26 @@ export const Presentation = ({
 }: PresentationProps) => {
   return (
     <>
-      {images.map((image) => (
-        <GatsbyImage
-          key={image.id}
-          alt={image.altText ?? "商品画像"}
-          image={image.gatsbyImageData}
-        />
-      ))}
+      {product?.images?.map((image) => {
+        if (!image?.gatsbyImageData) return;
+        return (
+          <GatsbyImage
+            key={image?.id}
+            alt="商品画像"
+            image={image?.gatsbyImageData}
+          />
+        );
+      })}
       <p>商品詳細ページ</p>
-      <p>商品名 {title}</p>
+      <p>商品名 {product?.title}</p>
       <p>種類</p>
       <ul>
-        {variants.map((variant) => (
-          <li key={variant.storefrontId}>
+        {product?.variants?.map((variant) => (
+          <li key={variant?.storefrontId}>
             <button
               onClick={() => handleSelectVariant(variant?.storefrontId ?? null)}
             >
-              {variant.title}
+              {variant?.title}
             </button>
           </li>
         ))}
