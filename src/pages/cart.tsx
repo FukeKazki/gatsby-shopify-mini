@@ -28,22 +28,23 @@ const CartPage = () => {
         {storeContext.cart.lineItems.map((lineItem) => (
           <li key={lineItem.id}>
             <p>商品名 {lineItem.title}</p>
+            <p>種類 {lineItem.variant.id}</p>
             <p>個数 {lineItem.quantity}</p>
             <button
               onClick={() =>
-                doIncrement(lineItem.id as string, lineItem.quantity)
+                doIncrement(lineItem.id.toString(), lineItem.quantity)
               }
             >
               増やす
             </button>
             <button
               onClick={() =>
-                doDecrement(lineItem.id as string, lineItem.quantity)
+                doDecrement(lineItem.id.toString(), lineItem.quantity)
               }
             >
               減らす
             </button>
-            <button onClick={() => handleRemove(lineItem.id as string)}>
+            <button onClick={() => handleRemove(lineItem.id.toString())}>
               削除
             </button>
           </li>
