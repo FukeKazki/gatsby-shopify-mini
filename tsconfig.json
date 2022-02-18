@@ -12,6 +12,7 @@
     "noEmit": true,
     "skipLibCheck": true,
     "moduleResolution": "node",
-    "types": ["@emotion/react/types/css-prop"]
+    "types": ["@emotion/react/types/css-prop"],
+    "typeRoots": ["shopify.d.ts"]
   }
 }

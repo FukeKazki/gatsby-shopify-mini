@@ -3246,13 +3246,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/shopify-buy@npm:2.10.10":
-  version: 2.10.10
-  resolution: "@types/shopify-buy@npm:2.10.10"
-  checksum: 4ba3e81ee7be03d6e1c2f40facea67a1d8d1182ed23984314f48a6022453027f86b3e8295960bac399afe83f3352184fc354e9aa0e793f4ddd199ff8997ada78
-  languageName: node
-  linkType: hard
-
 "@types/tmp@npm:^0.0.33":
   version: 0.0.33
   resolution: "@types/tmp@npm:0.0.33"
@@ -7868,7 +7861,6 @@ __metadata:
   dependencies:
     "@emotion/react": ^11.7.1
     "@emotion/styled": ^11.6.0
-    "@types/shopify-buy": 2.10.10
     "@typescript-eslint/eslint-plugin": ^5.11.0
     "@typescript-eslint/parser": ^5.11.0
     dotenv: ^10.0.0
