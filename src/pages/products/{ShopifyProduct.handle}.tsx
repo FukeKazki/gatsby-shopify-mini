@@ -1,10 +1,12 @@
 import * as React from "react";
 import { graphql, PageProps } from "gatsby";
 import { Product } from "../../components/template/Product";
+import { Header } from "../../components/shared/Header";
 
 const ProductPage = ({ data }: PageProps<GatsbyTypes.ProductPageQuery>) => {
   return (
     <>
+      <Header/>
       <Product data={data} />
     </>
   );

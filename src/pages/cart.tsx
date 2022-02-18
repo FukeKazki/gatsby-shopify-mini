@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useContext } from "react";
 import { StoreContext } from "../context/store";
+import { Header } from "../components/shared/Header";
 
 // 商品の増減・削除
 // 購入フォームへの遷移
@@ -22,13 +23,15 @@ const CartPage = () => {
 
   return (
     <>
+      <Header/>
       <p>カートページ</p>
       <p>カートの中身</p>
       <ul>
         {storeContext.cart?.lineItems?.map((lineItem) => (
           <li key={lineItem.id}>
+            <img alt={lineItem.variant.image.altText} src={lineItem.variant.image.src}/>
             <p>商品名 {lineItem.title}</p>
-            <p>種類 {lineItem.variant.id}</p>
+            <p>種類 {lineItem.variant.title}</p>
             <p>個数 {lineItem.quantity}</p>
             <button
               onClick={() =>
