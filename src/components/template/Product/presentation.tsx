@@ -1,5 +1,6 @@
 import * as React from "react";
 import { GatsbyImage } from "gatsby-plugin-image";
+import { QuantityButton } from "../../shared/QuantityButton";
 
 type PresentationProps = {
   data: GatsbyTypes.ProductPageQuery;
@@ -45,9 +46,8 @@ export const Presentation = ({
         ))}
       </ul>
 
-      <button onClick={handleIncrement}>+</button>
-      <span>{quantity}</span>
-      <button onClick={handleDecrement}>-</button>
+      <QuantityButton quantity={quantity} handleDecrement={handleDecrement} handleIncrement={handleIncrement}/>
+
       <button onClick={handleBuy}>カートに入れる</button>
     </>
   );
